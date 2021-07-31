@@ -23,16 +23,14 @@ namespace util
         };
 
         template<typename Duration1, typename Duration2>
-        constexpr inline bool is_less_precise_v =
-                std::ratio_greater<typename Duration1::period, typename Duration2::period>::value;
+        constexpr inline bool is_less_precise_v = std::ratio_greater<typename Duration1::period, typename Duration2::period>::value;
 
     }// namespace detail
 
     template<typename... Durations>
     class TimeSplitter
     {
-        static_assert(std::conjunction_v<detail::is_duration<Durations>...>,
-                      "All types must be of type std::chrono::duration");
+        static_assert(std::conjunction_v<detail::is_duration<Durations>...>, "All types must be of type std::chrono::duration");
 
         using SplitTimeType = std::tuple<Durations...>;
         using MaxPrecisionType = std::chrono::nanoseconds;
@@ -49,8 +47,7 @@ namespace util
             if constexpr(I + 1 < N)
             {
                 using Duration2 = typename std::tuple_element<I + 1, SplitTimeType>::type;
-                static_assert(detail::is_less_precise_v<Duration1, Duration2>,
-                              "Values must be in order of least precise to most precise");
+                static_assert(detail::is_less_precise_v<Duration1, Duration2>, "Values must be in order of least precise to most precise");
                 dur -= std::get<I>(t);
                 splitTimeImpl<I + 1>(dur, t);
             }

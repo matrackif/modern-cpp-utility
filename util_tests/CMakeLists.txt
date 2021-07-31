@@ -13,7 +13,9 @@ FetchContent_Declare(
 
 FetchContent_MakeAvailable(ut)
 
-add_executable(${PROJECT_NAME} src/Test_TimeSplitter.cpp)
+add_executable(${PROJECT_NAME} src/TimeSplitter_CompileTimeSuite.cpp
+							   src/main.cpp
+							   )
 
 # Temporary fix, boost.ut as a module may work only if it's installed,
 # and not with FetchContent?
