@@ -69,7 +69,7 @@ namespace util
         ///    // ret contains the following values: [1, 302, 100]
         /// </pre>
         template<typename Rep, typename Period>
-        static constexpr SplitTimeType split(std::chrono::duration<Rep, Period> dur)
+        [[nodiscard]] static constexpr SplitTimeType split(std::chrono::duration<Rep, Period> dur)
         {
             SplitTimeType ret;
             splitTimeImpl(std::chrono::duration_cast<MaxPrecisionType>(dur), ret);

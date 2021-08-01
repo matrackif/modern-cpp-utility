@@ -15,8 +15,9 @@ FetchContent_MakeAvailable(ut)
 
 add_executable(${PROJECT_NAME} src/TimeSplitter_CompileTimeSuite.cpp
 							   src/main.cpp
-							   )
+							    "include/TestUtilities.hpp")
 
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/include)
 # Temporary fix, boost.ut as a module may work only if it's installed,
 # and not with FetchContent?
 target_compile_definitions(${PROJECT_NAME} PRIVATE BOOST_UT_DISABLE_MODULE)
