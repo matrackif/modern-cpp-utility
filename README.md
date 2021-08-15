@@ -1,5 +1,6 @@
 # modern-cpp-utility
 <a href="https://github.com/matrackif/modern-cpp-utility/actions/workflows/windows.yml" target="_blank">![Windows](https://github.com/matrackif/modern-cpp-utility/actions/workflows/windows.yml/badge.svg)</a>
+<a href="https://github.com/matrackif/modern-cpp-utility/actions/workflows/linux.yml" target="_blank">![Linux](https://github.com/matrackif/modern-cpp-utility/actions/workflows/linux.yml/badge.svg)</a>
 
 Modern C++, (C++20 or higher) library with useful utility functionality, with an emphasis on compile time evaluation
 
