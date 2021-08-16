@@ -28,6 +28,7 @@ namespace
             expect_eq(std::get<1>(time), 5min);
         };
 
+#if __cpp_lib_chrono >= 201907L
         "ts_3_days_passed"_test = []
         {
             static constexpr auto elapsed =
@@ -159,5 +160,6 @@ namespace
                 };
             };
         };
+#endif// __cpp_lib_chrono >= 201907L
     };
 }// namespace
