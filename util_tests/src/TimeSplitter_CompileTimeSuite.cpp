@@ -1,8 +1,9 @@
-// TODO: use module instead of include
+#if __cpp_lib_chrono >= 201907L
+/ TODO : use module instead of include
 #include <TestUtilities.hpp>
 #include <util/TimeSplitter.hpp>
 
-namespace
+         namespace
 {
     // Uses C++20 chrono features
     boost::ut::suite compileTimeSuite = []
@@ -16,6 +17,8 @@ namespace
 
         "ts_compile_time_simple_1"_test = []
         {
+            sc::days test{1};
+            std::cout << test << '\n';
             static constexpr auto time = util::TimeSplitter<sc::seconds, sc::milliseconds>::split(2500ms);
             expect_eq(std::get<0>(time), 2s);
             expect_eq(std::get<1>(time), 500ms);
@@ -28,7 +31,6 @@ namespace
             expect_eq(std::get<1>(time), 5min);
         };
 
-#if __cpp_lib_chrono >= 201907L
         "ts_3_days_passed"_test = []
         {
             static constexpr auto elapsed =
@@ -160,6 +162,6 @@ namespace
                 };
             };
         };
-#endif// __cpp_lib_chrono >= 201907L
     };
 }// namespace
+#endif// __cpp_lib_chrono >= 201907L
