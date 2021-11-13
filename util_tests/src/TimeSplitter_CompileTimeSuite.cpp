@@ -1,14 +1,13 @@
-#if __cpp_lib_chrono >= 201907L
-/ TODO : use module instead of include
 #include <TestUtilities.hpp>
 #include <util/TimeSplitter.hpp>
+#if __cpp_lib_chrono >= 201907L
 
-         namespace
+namespace
 {
     // Uses C++20 chrono features
     boost::ut::suite compileTimeSuite = []
     {
-        // I personally think using namespace is a bad practice, however in boost::ut encourages it
+        // I personally think using namespace is a bad practice, however boost::ut encourages it.
         // It is also the accepted way to use C++ user-defined literals such as min, s, etc...
         using namespace boost::ut;
         using namespace util::test;
@@ -17,8 +16,6 @@
 
         "ts_compile_time_simple_1"_test = []
         {
-            sc::days test{1};
-            std::cout << test << '\n';
             static constexpr auto time = util::TimeSplitter<sc::seconds, sc::milliseconds>::split(2500ms);
             expect_eq(std::get<0>(time), 2s);
             expect_eq(std::get<1>(time), 500ms);
@@ -164,4 +161,5 @@
         };
     };
 }// namespace
+
 #endif// __cpp_lib_chrono >= 201907L

@@ -7,7 +7,7 @@ project(
 # Include modern C++20 macro free unit testing suite by Kris Jusiak in boost-ext library
 FetchContent_Declare(
   ut
-  GIT_REPOSITORY  https://github.com/boost-ext/ut.git
+  GIT_REPOSITORY  https://github.com/matrackif/ut.git
   GIT_TAG master
 )
 
